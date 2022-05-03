@@ -14,8 +14,6 @@ __pycache__
 /assets/jsconfig.json
 hugo_stats.json
 
-# public output
-/public/
 
 # Temporary lock file while building
 /.hugo_build.lock
