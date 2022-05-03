@@ -1,0 +1,62 @@
+name: Render and deploy quarto files
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  render-and-deploy:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          channels: conda-forge
+          mamba-version: "*"
+          activate-environment: blog
+          environment-file: binder/environment.yml
+
+      - name: "Verify Conda"
+        shell: bash -l {0}
+        run: |
+          conda info
+          conda list
+          jupyter kernelspec list
+          which python
+
+      - name: "Setup Quarto"
+        uses: quarto-dev/quarto-actions/install-quarto@main
+        with:
+          version: 0.9.345
+
+      - name: "Setup Hugo"
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.91.2'
+          extended: true
+
+      - name: "Quarto render"
+        shell: bash -l {0}
+        run: |
+          pwd
+          jupyter kernelspec list
+          find . -type f -name "*.qmd"
+          find . -type f -name "*.qmd" | xargs -i quarto render {} --execute-debug --execute-daemon
+
+      - name: "Hugo Build"
+        run: hugo --minify
+
+      - name: "Deploy to github pages"
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: test

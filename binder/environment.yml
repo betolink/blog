@@ -1,0 +1,21 @@
+name: blog
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.9
+  - pangeo-notebook
+  - xarray>=0.20.1
+  - rioxarray>=0.10
+  - h5netcdf>=0.15
+  - h5py>=3.5
+  - matplotlib-base>=3.4
+  - ipyleaflet>=0.15
+  - pyproj>=3.3
+  - cartopy>=0.20
+  - geopandas>=0.9
+  - zarr>=2.9
+  - earthdata>=0.3.1
+  - pip
+  - pip:
+      - -r requirements.txt

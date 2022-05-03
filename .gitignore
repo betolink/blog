@@ -1,0 +1,23 @@
+.python-version
+
+__pycache__
+.ipynb_checkpoints
+.pytest_cache
+
+/.quarto/
+*_cache/
+/.venv/
+
+
+# Generated files by hugo
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# public output
+/public/
+
+# Temporary lock file while building
+/.hugo_build.lock
+
+
