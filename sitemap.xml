@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://betolink.dev/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/categories/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/categories/coordinates/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/posts/hello-world/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/categories/matplotlib/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/posts/</loc>
+    <lastmod>2022-05-02T13:23:37-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/about/</loc>
+    <lastmod>2022-05-02T13:18:14-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/search/</loc>
+    <lastmod>2022-05-02T13:08:02-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/archives/</loc>
+    <lastmod>2022-05-02T13:06:53-05:00</lastmod>
+  </url><url>
+    <loc>https://betolink.dev/series/</loc>
+  </url><url>
+    <loc>https://betolink.dev/tags/</loc>
+  </url>
+</urlset>
