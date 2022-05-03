@@ -27,7 +27,6 @@ jobs:
         shell: bash -l {0}
         run: |
           conda info
-          conda list
           jupyter kernelspec list
           which python
 
@@ -45,7 +44,6 @@ jobs:
       - name: "Quarto render"
         shell: bash -l {0}
         run: |
-          pwd
           jupyter kernelspec list
           find . -type f -name "*.qmd"
           find . -type f -name "*.qmd" | xargs -i quarto render {} --execute-debug --execute-daemon
