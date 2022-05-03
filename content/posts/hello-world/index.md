@@ -8,10 +8,6 @@ format: hugo
 jupyter: python3
 ---
 
-Hello World
-================
-2022-05-02T13:23:37-05:00
-
 ## Polar Axis
 
 For a demonstration of a line plot on a polar axis, see
