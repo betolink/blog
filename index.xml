@@ -17,8 +17,9 @@
       
       <guid>https://betolink.dev/posts/hello-world/</guid>
       <description>Hello World 2022-05-02T13:23:37-05:00
-Polar Axis For a demonstration of a line plot on a polar axis, see Figure 1.
-1 2 3 4 5 6 7 8 9 10  import numpy as np import matplotlib.pyplot as plt r = np.arange(0, 2, 0.01) theta = 2 * np.pi * r fig, ax = plt.subplots(subplot_kw={&amp;#39;projection&amp;#39;: &amp;#39;polar&amp;#39;}) ax.plot(theta, r) ax.set_rticks([0.5, 1, 1.5, 2]) ax.grid(True) plt.show()    Figure 1: A line plot on a polar axis  </description>
+  define(&#39;jquery&#39;, [],function() {return window.jQuery;}) Blog setup This blog is a statically generated blog that can contain executable documents (Jupyter notebooks) using a simple stack:
+  Hugo: No need for introductions, one of the most used static site generators out there.
+  Jupyter notebooks: Also no need for introductions but just in case&amp;hellip; here is an amazing explanation for what Jupyter notebooks are and why they rock:</description>
     </item>
     
     <item>
@@ -27,7 +28,8 @@ Polar Axis For a demonstration of a line plot on a polar axis, see Figure 1.
       <pubDate>Mon, 02 May 2022 13:18:14 -0500</pubDate>
       
       <guid>https://betolink.dev/about/</guid>
-      <description></description>
+      <description>Luis López is a Research Software Engineer currently working at the National Snow and Ice Data Center (NSIDC) in Boulder, Colorado. He has collaborated in developing tools and services to facilitate data access and discoverability for different NASA Earth missions.
+Luis is a passionate advocate for open science and has contributed to open source projects such as Apache Nutch, PyLDAVis, Kubernetes and others. Luis has presented his work at SciPy LATAM, PyData Global and the IEEE annual Big Data symposium.</description>
     </item>
     
     
