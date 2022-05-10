@@ -16,6 +16,9 @@ dependencies:
   - geopandas>=0.9
   - zarr>=2.9
   - earthdata>=0.3.1
+  # viz
+  - ipympl
+  - pywaffle
   - pip
   - pip:
       - -r requirements.txt

@@ -13,7 +13,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-# googleAnalytics: UA-123-45
+googleAnalytics: G-KCME2LBMDG
 
 minify:
   disableXML: true
@@ -52,8 +52,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   description: "@betolink personal blog"
   author: "@betolink"
-  # author: ["Me", "You"] # multiple authors
-
+  comments: true
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: true
@@ -65,14 +64,13 @@ params:
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
   ShowToc: true
-  # comments: false
   images: ["papermod-cover.png"]
 
   profileMode:
-    enabled: false
+    enabled: enabled
     title: "Luis López"
     subtitle: "Software Engineer and World Wanderer"
-    imageUrl: "images/LuisLopez.jpg"
+    imageUrl: "images/profile.png"
     imageTitle: my image
     # imageWidth: 120
     # imageHeight: 120
@@ -92,12 +90,18 @@ params:
       url: "https://github.com/betolink"
     - name: twitter
       url: "https://twitter.com/betolink"
-    - name: instagram
-      url: "https://instagram.com/betolink"
     - name: RsS
       url: "index.xml"
 
-
+  # server:
+  #   headers:
+  #     - for: /**
+  #       values:
+        # Content-Security-Policy: default-src localhost:1313
+        # Referrer-Policy: strict-origin-when-cross-origin
+        # X-Content-Type-Options: nosniff
+        # X-Frame-Options: DENY
+        # X-XSS-Protection: 1; mode=block
   # label:
   #     text: "Home"
   #     icon: icon.png

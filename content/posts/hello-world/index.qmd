@@ -1,29 +1,74 @@
 ---
 title: "Hello World"
 date: 2022-05-02T13:23:37-05:00
-categories:
-  - Matplotlib
-  - Coordinates
 format: hugo
+hideMeta: true
 jupyter: python3
+GHissueID: 1
 ---
 
-## Polar Axis
+## Blog setup
 
-For a demonstration of a line plot on a polar axis, see @fig-polar.
+This blog is a statically generated blog that can contain
+executable documents (Jupyter notebooks) using a simple stack:
+
+* [**Hugo**](https://gohugo.io/): No need for introductions, one of the most used static site generators out there.
+
+* [**Jupyter notebooks**](https://jupyter.org/): Also no need for introductions but just in case... here is an amazing explanation for what Jupyter notebooks are and why they rock:
+  * [Why Jupyter is data scientists’ computational notebook of choice](https://www.nature.com/articles/d41586-018-07196-1)
+
+* [**Quarto**](https://quarto.org/): This is a relatively new library for scientific publication built on top of Pandoc from the same team that created RStudio. Quarto is very easy to configure and comes with batteries included, with Quarto we can:
+  * Create dynamic content with Python, R, Julia, and Observable.
+  * Author documents as plain text markdown or Jupyter notebooks.
+  * Publish high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+  * Author with scientific markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more.
+
+
+For a demonstration, let's use the example with geopandas.
+
 
 ```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
 
-import numpy as np
-import matplotlib.pyplot as plt
+import geopandas
 
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
+world = geopandas.read_file(geopandas.datasets.get_path('naturalearth_lowres'))
+world = world[(world.pop_est>0) & (world.name!="Antarctica")]
+
+world['gdp_per_cap'] = round((world.gdp_md_est * 1e6) / world.pop_est, 2)
+
+world.explore(
+     column="gdp_per_cap", # make choropleth based on "BoroName" column
+     popup=True, # show all values in popup (on click)
+     # tiles="CartoDB positron", # use "CartoDB positron" tiles
+     cmap="viridis", # use "Set1" matplotlib colormap
+     style_kwds=dict(color="black") # use black outline
+    )
+
+
 ```
+
+## How does it work?
+
+A technical blog post usually involves rendering text, code and computations, I often use Jupyter notebooks to illustrate an idea, workflow or a prototype. An issue with statically generated blogs is that we don't have a backend to execute such code so we only publish our rendered output. We can do it in a semi-automatic way by exporting our notebooks into HTML documents but the results will look a bit off if we want to integrate it with the look and feel of an existing Hugo-site.
+
+There are ways of course, most of the technical documentation out there does this but the outputs are mostly tailored for that, documentation... 2 columns, a toc table and that's it. With Hugo we have the flexibility of building an amazing site with simple editable documents.
+
+### Hugo + Quarto
+
+These are the steps for Python content.
+
+1. Create and activate a conda environment with the dependencies needed for the blog post.
+2. Write a post using a notebook or a qmd document using [Hugo's bundled pages](https://quarto.org/docs/output-formats/hugo.html) `content/my_post/index.qmd`
+3. use Quarto to render the document
+    * `quarto render content/my_post/index.qmd`
+4. Build the site with Hugo
+    * `hugo build`
+
+Done! we have a new technical post that we can publish using github pages or a self hosted site!
+
+
+## Commenting: Github issues as comments.
+
+If you want to leave a comment I'm using the ideas from posts like Ivan Zuzak's [GitHub hosted comments](http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html) to avoid having Disqus or another annoying ad-tracking code. The only caveat is that we need to sign-up for Github before commenting.
+
+Here is the github repository used to setup this blog and hopefully this will be the first of many entries. [github.com/betolink/blog](https://github.com/betolink/blog)

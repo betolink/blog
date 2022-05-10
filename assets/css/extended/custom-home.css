@@ -1,0 +1,23 @@
+
+.profile-home {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding-top: 1.3em;
+  width: 100%;
+}
+
+.profile-home img{
+    padding: 1em;
+    height: auto;
+    width: 50%;
+}
+
+
+.profile-home p{
+    padding: 0.1em;
+}
+
+.post-content a {
+    text-decoration-line: underline;
+}
