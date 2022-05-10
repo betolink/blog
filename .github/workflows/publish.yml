@@ -49,7 +49,9 @@ jobs:
           find . -type f -name "*.qmd" | xargs -i quarto render {} --execute-debug --execute-daemon
 
       - name: "Hugo Build"
-        run: hugo --minify
+        run: |
+          hugo --minify
+          cp CNAME ./public/
 
       - name: "Deploy to github pages"
         uses: peaceiris/actions-gh-pages@v3
