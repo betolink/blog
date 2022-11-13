@@ -31,9 +31,9 @@ jobs:
           which python
 
       - name: "Setup Quarto"
-        uses: quarto-dev/quarto-actions/install-quarto@main
+        uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 0.9.345
+          version: 1.1.251
 
       - name: "Setup Hugo"
         uses: peaceiris/actions-hugo@v2
