@@ -16,8 +16,7 @@
       <pubDate>Mon, 02 May 2022 13:23:37 -0500</pubDate>
       
       <guid>https://betolink.dev/posts/hello-world/</guid>
-      <description>Hello World 2022-05-02T13:23:37-05:00
-  define(&#39;jquery&#39;, [],function() {return window.jQuery;}) Blog setup This blog is a statically generated blog that can contain executable documents (Jupyter notebooks) using a simple stack:
+      <description>define(&#39;jquery&#39;, [],function() {return window.jQuery;}) Blog setup This blog is a statically generated blog that can contain executable documents (Jupyter notebooks) using a simple stack:
   Hugo: No need for introductions, one of the most used static site generators out there.
   Jupyter notebooks: Also no need for introductions but just in case&amp;hellip; here is an amazing explanation for what Jupyter notebooks are and why they rock:</description>
     </item>
