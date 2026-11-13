@@ -1,0 +1,144 @@
+baseURL = "https://betolink.github.io/blog/"
+title = "betolink"
+theme = "rewired"
+
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.160.0"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+  [markup.highlight]
+    style = "dracula"
+    noClasses = true
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+    tabWidth = 2
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
+
+[params]
+  author = "Luis López"
+  handle = "betolink"
+  description = "A personal technical notebook on software engineering, scientific computing, Earth observation, open-source experiments, amateur astronomy, and my political views."
+  descriptionLines = [
+    "Software engineering, scientific computing, and Earth observation.",
+    "Open-source development, notebooks, amateur astronomy, and my political views.",
+  ]
+  tagline = "I write on the [blog](posts/), publish [notebooks](notebooks/), and keep notes on [projects](projects/)."
+  logo = "images/logo.png"
+  blogPageSize = 10
+  mainSections = ["posts", "notebooks"]
+  giscusRepo = "betolink/blog"
+  giscusRepoId = "R_kgDOHRd2xg"
+  giscusCategory = "General"
+  giscusCategoryId = "DIC_kwDOHRd2xs4CSiKb"
+  giscusMapping = "pathname"
+  giscusReactions = "1"
+  giscusInputPosition = "top"
+  giscusLang = "en"
+
+  [params.toc]
+    enabled = true
+    ordered = false
+    startLevel = 2
+    endLevel = 3
+
+  [params.footer]
+    text = 'betolink // built with [Hugo](https://gohugo.io/), [Quarto](https://quarto.org/), and the [rewired](https://github.com/betolink/rewired) theme'
+    prompt = "betolink@localhost:~$"
+
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/betolink"
+    icon = "fa-brands fa-github"
+
+  [[params.social]]
+    name = "X"
+    url = "https://x.com/betolink"
+    icon = "fa-brands fa-x-twitter"
+
+  [[params.social]]
+    name = "Keybase"
+    url = "https://keybase.io/betolink"
+    icon = "fa-brands fa-keybase"
+
+  [[params.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/betolink/"
+    icon = "fa-brands fa-linkedin"
+
+  [[params.social]]
+    name = "RSS"
+    url = "index.xml"
+    icon = "fa-solid fa-rss"
+
+  [[params.subnodes]]
+    name = "github.com/betolink"
+    url = "https://github.com/betolink"
+    description = "Code, experiments, and open-source work"
+
+[[menus.main]]
+  name = "home"
+  pageRef = "/"
+  weight = 10
+
+[[menus.main]]
+  name = "blog"
+  pageRef = "/posts"
+  weight = 20
+
+[[menus.main]]
+  name = "notebooks"
+  pageRef = "/notebooks"
+  weight = 30
+
+[[menus.main]]
+  name = "projects"
+  pageRef = "/projects"
+  weight = 40
+
+[[menus.main]]
+  name = "travel"
+  pageRef = "/travel"
+  weight = 45
+
+[[menus.main]]
+  name = "about"
+  pageRef = "/about"
+  weight = 50
+
+[[menus.main]]
+  name = "search"
+  pageRef = "/search"
+  weight = 60

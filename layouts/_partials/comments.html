@@ -1,0 +1,38 @@
+{{- $repo := site.Params.giscusRepo -}}
+{{- $repoId := site.Params.giscusRepoId -}}
+{{- $category := site.Params.giscusCategory -}}
+{{- $categoryId := site.Params.giscusCategoryId -}}
+
+{{- if and $repo $repoId $category $categoryId -}}
+<section class="comments" data-pagefind-ignore aria-label="Comments">
+	<h2 class="comments__title">/comments<span class="cursor" aria-hidden="true">_</span></h2>
+
+	<div class="comments__widget"
+		data-giscus-repo="{{ $repo }}"
+		data-giscus-repo-id="{{ $repoId }}"
+		data-giscus-category="{{ $category }}"
+		data-giscus-category-id="{{ $categoryId }}"
+		data-giscus-mapping="{{ site.Params.giscusMapping | default "pathname" }}"
+		data-giscus-reactions="{{ site.Params.giscusReactions | default "1" }}"
+		data-giscus-input-position="{{ site.Params.giscusInputPosition | default "top" }}"
+		data-giscus-lang="{{ site.Params.giscusLang | default "en" }}"
+	>
+		<script src="https://giscus.app/client.js"
+			data-repo="{{ $repo }}"
+			data-repo-id="{{ $repoId }}"
+			data-category="{{ $category }}"
+			data-category-id="{{ $categoryId }}"
+			data-mapping="{{ site.Params.giscusMapping | default "pathname" }}"
+			data-strict="0"
+			data-reactions-enabled="{{ site.Params.giscusReactions | default "1" }}"
+			data-emit-metadata="0"
+			data-input-position="{{ site.Params.giscusInputPosition | default "top" }}"
+			data-theme="dark"
+			data-lang="{{ site.Params.giscusLang | default "en" }}"
+			data-loading="lazy"
+			crossorigin="anonymous"
+			async>
+		</script>
+	</div>
+</section>
+{{- end -}}

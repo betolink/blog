@@ -1,0 +1,14 @@
+{{- with site.Params.social -}}
+	<div class="social-list" aria-label="Social links">
+		{{- range . -}}
+			{{- $url := .url -}}
+			{{- if not (hasPrefix $url "http") -}}{{- $url = $url | relURL -}}{{- end -}}
+			<a class="social-list__link" href="{{ $url }}" rel="me noopener" target="_blank">
+				<span class="social-list__icon" aria-hidden="true">
+					{{ with .icon }}<i class="{{ . }}"></i>{{ else }}◇{{ end }}
+				</span>
+				<span>{{ .name }}</span>
+			</a>
+		{{- end -}}
+	</div>
+{{- end -}}

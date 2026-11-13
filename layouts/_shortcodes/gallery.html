@@ -1,0 +1,34 @@
+{{- $page := .Page -}}
+{{- $items := $page.Params.gallery -}}
+
+{{- if $items -}}
+	<div class="photo-gallery" data-photo-gallery>
+		{{- range $items -}}
+			{{- $resource := $page.Resources.GetMatch .src -}}
+			{{- if $resource -}}
+				{{- $thumb := $resource.Fill "720x540 Center q82" -}}
+				{{- $full := $resource.Fit "1800x1800 q88" -}}
+				<a class="photo-gallery__item"
+					href="{{ $full.RelPermalink }}"
+					data-gallery-item
+					data-caption="{{ .caption | default "" }}"
+					data-caption-link="{{ .link | default "" }}"
+					data-caption-link-text="{{ .link_text | default "" }}"
+					data-alt="{{ .alt | default .caption | default $resource.Name }}">
+					<img
+						src="{{ $thumb.RelPermalink }}"
+						alt="{{ .alt | default .caption | default $resource.Name }}"
+						width="{{ $thumb.Width }}"
+						height="{{ $thumb.Height }}"
+						loading="lazy"
+						decoding="async"
+					>
+				</a>
+			{{- else -}}
+				{{- warnf "gallery: image %q not found for %s" .src $page.File.Path -}}
+			{{- end -}}
+		{{- end -}}
+	</div>
+{{- else -}}
+	{{- warnf "gallery: no images configured for %s" $page.File.Path -}}
+{{- end -}}

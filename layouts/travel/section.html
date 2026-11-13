@@ -1,0 +1,76 @@
+{{ define "main" }}
+
+{{ $posts := .RegularPages.ByDate.Reverse }}
+
+<section class="travel-page" aria-labelledby="travel-title">
+	<header class="blog-header">
+		<h1 id="travel-title" class="blog-title">
+			/{{ .Title | lower }}<span class="cursor" aria-hidden="true">_</span>
+		</h1>
+
+		{{ with .Description }}
+			<p class="blog-description">{{ . }}</p>
+		{{ end }}
+
+		{{ with .Content }}
+			<div class="blog-description page__content">{{ . }}</div>
+		{{ end }}
+	</header>
+
+	{{ if $posts }}
+		<div class="travel-list">
+			{{ range $posts }}
+				{{ $post := . }}
+				{{ $cover := .Resources.GetMatch "images/*" }}
+				<article class="travel-card">
+					<a class="travel-card__link" href="{{ .RelPermalink }}">
+						{{ with $cover }}
+							{{ $thumb := .Fill "640x420 Center q82" }}
+							<img
+								class="travel-card__cover"
+								src="{{ $thumb.RelPermalink }}"
+								alt="{{ $post.Title }}"
+								width="{{ $thumb.Width }}"
+								height="{{ $thumb.Height }}"
+								loading="lazy"
+								decoding="async"
+							>
+						{{ end }}
+
+						<span class="travel-card__body">
+							{{ if not .Date.IsZero }}
+								<time class="travel-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+									{{ .Date.Format "2006-01-02" }}
+								</time>
+							{{ end }}
+
+							<span class="travel-card__title">{{ .Title }}</span>
+
+							<span class="travel-card__description">
+								{{ with .Description }}
+									{{ . }}
+								{{ else }}
+									{{ .Summary | plainify | truncate 160 }}
+								{{ end }}
+							</span>
+
+							{{ with .Params.tags }}
+								<span class="blog-card__tags">
+									{{ range first 5 . }}
+										<span class="blog-card__tag">{{ . }}</span>
+									{{ end }}
+								</span>
+							{{ end }}
+						</span>
+
+						<span class="travel-card__arrow" aria-hidden="true">→</span>
+					</a>
+				</article>
+			{{ end }}
+		</div>
+	{{ else }}
+		<p class="empty-state">No travel posts yet.</p>
+	{{ end }}
+</section>
+
+{{ end }}

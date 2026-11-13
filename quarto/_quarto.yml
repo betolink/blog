@@ -1,0 +1,23 @@
+project:
+  type: default
+  output-dir: ../content/notebooks
+  render:
+    - ../notebooks/**/*.qmd
+    - ../notebooks/**/*.ipynb
+
+format:
+  hugo-md:
+    code-fold: false
+    code-summary: "show code"
+    echo: true
+    warning: false
+    message: false
+    fig-cap-location: bottom
+    tbl-cap-location: bottom
+    number-sections: false
+
+execute:
+  enabled: true
+  freeze: auto
+
+jupyter: python3

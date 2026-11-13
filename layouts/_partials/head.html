@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+	{{- if .IsHome -}}
+		{{ site.Title }}
+	{{- else -}}
+		{{ .Title }} · {{ site.Title }}
+	{{- end -}}
+</title>
+
+{{- $description := "" -}}
+{{- with .Description -}}
+	{{- $description = . -}}
+{{- else -}}
+	{{- $description = site.Params.description -}}
+{{- end -}}
+<meta name="description" content="{{ $description }}">
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- with site.Params.logo }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end }}
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+{{- with .Params.tags }}
+{{- range . }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- end }}
+{{- end }}
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="theme-color" content="#efe3c8" data-theme-color>
+
+{{- with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+{{- end }}
+
+<script>
+	(function () {
+		try {
+			var allowed = ['commodore', 'crt', 'sepia'];
+			var theme = localStorage.getItem('rewired-theme');
+			if (allowed.indexOf(theme) === -1) theme = 'sepia';
+			document.documentElement.dataset.theme = theme;
+		} catch (error) {
+			document.documentElement.dataset.theme = 'sepia';
+		}
+	})();
+</script>
+
+<link rel="preload" href="{{ "vendor/fonts/fira-code-latin-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ "vendor/fonts/fonts.css" | relURL }}">
+<link rel="stylesheet" href="{{ "vendor/fontawesome/css/all.min.css" | relURL }}">
+
+{{ if eq .Layout "search" }}
+<link rel="stylesheet" href="{{ "pagefind/pagefind-ui.css" | relURL }}">
+<script defer src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+{{ end }}
+
+{{ partial "head/css.html" . }}
+{{ partial "head/js.html" . }}
+{{ partial "head/math.html" . }}

@@ -1,21 +1,36 @@
-.python-version
-
-__pycache__
-.ipynb_checkpoints
-.pytest_cache
-
-/.quarto/
-*_cache/
-/.venv/
-
-
-# Generated files by hugo
+# Hugo build output
+/public/
 /resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
+/hugo_stats.json
+.hugo_build.lock
 
+# Generated notebook pages and downloadable sources
+/content/notebooks/*
+!/content/notebooks/_index.md
+/static/notebooks-src/
 
-# Temporary lock file while building
-/.hugo_build.lock
+# Quarto caches and scratch files
+/.quarto/
+/.cache/
+/quarto/.quarto/
+/quarto/_freeze/
+/quarto/notebooks/
+*.quarto_ipynb
 
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pixi/
 
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local secrets and overrides
+.env
+.env.*
+/config/local.toml
+/config/_default/local.toml
