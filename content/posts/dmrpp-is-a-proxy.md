@@ -50,12 +50,13 @@ step, or a store that records the reference and object version together.
 
 ## Where it comes from
 
-The underlying move is older than cloud-native formats. The
-[HDF4MapReader](https://hdf4mapreader.sourceforge.net/index.html) project, which
-I was involved with, exposed the internal metadata of scientific files so people
-could still understand them years after the original tools disappeared.
+The underlying motivation behind metadata sidecars is older than cloud-native
+formats. The [HDF4MapReader](https://hdf4mapreader.sourceforge.net/index.html)
+project, which I was involved with, exposed the internal metadata of scientific
+files so people could still understand them years after the original tools
+disappeared.
 
-DMR++ and virtual chunk manifests are the same instinct, just more operational:
+DMR++ and virtual chunk manifests continue that work in a more operational form:
 make the internal map explicit, portable, and useful to software other than the
 original reader. The map should outlive the program that wrote the file. It
 still needs something else to prove the map is current.
