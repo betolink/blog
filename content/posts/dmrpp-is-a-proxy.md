@@ -18,7 +18,7 @@ The [reference notebook]({{< relref "/notebooks/dmrpp-to-zarr" >}}) parses a
 small DMR++ document, turns the offsets into a VirtualiZarr chunk manifest, and
 puts the result next to an Icechunk-style manifest.
 
-## Old idea, new clothes
+## Old ideas come back again
 
 At the chunk level, DMR++ and an Icechunk manifest are basically the same kind
 of object. Both say: this chunk lives in this file at this offset for this many
@@ -36,7 +36,7 @@ into one regular array. Even when they are not Icechunkable, DMR++ references to
 individual files still make it cheap to pull specific hyperspectral bands and
 load them lazily.
 
-## The part that does not prove anything
+## DMR++ lacks a file checksum
 
 DMR++ tells you where to read. It does not hash-bind the reference to the file
 it points at. If the granule is regenerated or replaced, an old sidecar can
